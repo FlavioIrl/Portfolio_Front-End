@@ -1,14 +1,13 @@
-import './App.css'
-import Perfil from './components/Perfil'
+import "./App.css";
+import Home from "./pages/Home/indes";
 
-const App = () => { 
+const App = () => {
+  
   return (
     <div>
-      <Perfil />
-      <h1>Olá mundo
-      </h1>
+      <Home />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
