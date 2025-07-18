@@ -1,6 +1,12 @@
 // Perfil.jsx
 import { useEffect, useState } from "react";
-import { ContainerPerfil, SideBar } from "./styles";
+import {
+  ButtonLink,
+  ContainerPerfil,
+  InfoPerfil,
+  Repositorio,
+  SideBar,
+} from "./styles";
 
 type GithubUser = {
   avatar_url: string;
@@ -31,25 +37,30 @@ const Perfil = () => {
   return (
     <ContainerPerfil>
       <SideBar>
-        <h1>Perfil</h1>
         {userData ? (
-          <div>
-            <img
-              id="avatar"
-              src={userData.avatar_url}
-              alt={userData.name}
-            />
-            <h2 id="name">{userData.name}</h2>
+          <InfoPerfil>
+            <img id="avatar" src={userData.avatar_url} alt={userData.name} />
+            <h1 id="name">{userData.name}</h1>
             <p id="username">@{userData.login}</p>
-            <p>Repositórios: <strong id="repository">{userData.public_repos}</strong></p>
-            <p>Seguidores: <strong id="followers">{userData.followers}</strong></p>
-            <p>Seguindo: <strong id="following">{userData.following}</strong></p>
-            <p>
-              <a id="link" href={userData.html_url} target="_blank" rel="noopener noreferrer">
-                Ver no GitHub
-              </a>
+            <br />
+            <p className="curso">
+              EBAC Full Stack Python
             </p>
-          </div>
+            <Repositorio>
+              <p>Repositórios</p>{" "}
+              <h2 id="repository">{userData.public_repos}</h2>
+            </Repositorio>
+            <ButtonLink>
+              <a
+                id="link"
+                href={userData.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver perfil no github
+              </a>
+            </ButtonLink>
+          </InfoPerfil>
         ) : (
           <p>Carregando dados...</p>
         )}
