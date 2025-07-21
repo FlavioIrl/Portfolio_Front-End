@@ -3,11 +3,11 @@
   padding: 0;
   box-sizing: border-box;
   list-style: none;
-  color: #fff;
 }
 
 body {
   margin: 0;
-  background-color: #1A1B27;
+  background-color: #1A1B27 !important;
+  color: #fff !important;
   box-sizing: border-box;
 }

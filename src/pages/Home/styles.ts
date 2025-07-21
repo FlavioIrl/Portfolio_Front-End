@@ -1,9 +1,9 @@
 import styled from "styled-components";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-export const Layout = styled.div`
+export const ContainerPerfil = styled.div`
   display: flex;
   height: 100vh;
-
   overflow: hidden;
 `;
 
