@@ -4,6 +4,7 @@ import {
   ButtonLink,
   ContainerPerfil,
   InfoPerfil,
+  LinkIcon,
   LinksContatos,
   Repositorio,
   SideBar,
@@ -27,7 +28,6 @@ const Perfil = () => {
   useEffect(() => {
     const endpoint = "https://api.github.com/users/FlavioIrl";
 
-
     fetch(endpoint)
       .then((res) => res.json())
       .then((data) => {
@@ -40,24 +40,45 @@ const Perfil = () => {
 
   return (
     <>
-      <ToggleButton isOpen={isOpen} onClick={() => setIsOpen((prev) => !prev)}>☰</ToggleButton>
+      <ToggleButton isOpen={isOpen} onClick={() => setIsOpen((prev) => !prev)}>
+        ☰
+      </ToggleButton>
       <ContainerPerfil isOpen={isOpen}>
         <SideBar>
           {userData ? (
             <InfoPerfil>
               <img id="avatar" src={userData.avatar_url} alt={userData.name} />
               <h1 id="name">{userData.name}</h1>
-              <p id="username">@{userData.login}</p>
+              <p className="username" id="username">@{userData.login}</p>
               <br />
-              <p className="curso">EBAC Full Stack Python</p>
+              <p className="curso">Cursando</p>
+              <p className="cursoEbac">EBAC Full Stack Python</p>
               <Repositorio>
-                <p>Repositórios</p>{" "}
+                <p >Projetos GitHub</p>
                 <h2 id="repository">{userData.public_repos}</h2>
               </Repositorio>
               <LinksContatos>
-                {/* <i className="bi bi-instagram"></i> */}
-                <img src="/images/linkedinIcon.png" alt="Ícone do LinkedIn" />
-                {/* <i className="bi bi-facebook"></i> */}
+                <LinkIcon
+                  className="linkedinIcon"
+                  title="Contato"
+                  href="https://icons8.com.br/icons/set/instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                ></LinkIcon>
+                <LinkIcon
+                  className="facebookIcon"
+                  title="Contato"
+                  href="https://icons8.com.br/icons/set/instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                ></LinkIcon>
+                <LinkIcon
+                  className="instagramIcon"
+                  title="Contato"
+                  href="https://icons8.com.br/icons/set/instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                ></LinkIcon>
               </LinksContatos>
               <ButtonLink>
                 <a

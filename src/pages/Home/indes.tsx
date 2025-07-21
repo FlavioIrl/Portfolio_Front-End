@@ -1,22 +1,21 @@
-import Gallery from "../../components/Gallery"
-import Perfil from "../../components/Perfil"
-import PerfilHorizontal from "../../components/PerfilHorizontal"
-import { ContainerPerfil, ListaGallegyWrapper } from "./styles"
+import Gallery from "../../components/Gallery";
+import Perfil from "../../components/Perfil";
+// import PerfilHorizontal from "../../components/PerfilHorizontal";
+import { ContainerPerfil, ListaGallegyWrapper } from "./styles";
 
-const Home = ( ) => {
-    return (
-        <div>
-            <ContainerPerfil>
-            <Perfil />
+const Home = () => {
+  return (
+    <div>
 
-            </ContainerPerfil>
+      {/* <PerfilHorizontal /> */}
+      <ListaGallegyWrapper>
+        <Gallery />
+      </ListaGallegyWrapper>
+      <ContainerPerfil>
+        <Perfil />
+      </ContainerPerfil>
+    </div>
+  );
+};
 
-            <PerfilHorizontal />
-            <ListaGallegyWrapper>
-                <Gallery />
-            </ListaGallegyWrapper>
-        </div>
-    )
-}
-
-export default Home
+export default Home;
