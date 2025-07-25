@@ -1,30 +1,59 @@
 import styled from "styled-components";
 
-export const ToggleButton = styled.button<{ isOpen: boolean }>`
+export const ToggleButton = styled.button<{ isOpen: boolean; $hidden?: boolean }>`
   position: fixed;
-  top: 15px;
-  left: ${({ isOpen }) => (isOpen ? "210px" : "20px")};
-  background-color: ${({ isOpen }) => (isOpen ? "#0620166b" : "#28c98b9c")};
+  top: 20px;
+  left: ${({ isOpen }) => (isOpen ? "220px" : "20px")};
+  background-color: ${({ isOpen }) => (isOpen ? "#31a396ff" : "#353535")};
   color: white;
-  font-size: clamp(1.5em, 3vw, 1.8em);
-  border: none;
+  font-size: clamp(1.5em, 3vw, 2.2em);
+  border: ${({ isOpen }) => (isOpen ? "2px solid #38bdae" : "none")};
   border-radius: 5px;
   padding: 0 10px;
   z-index: 1001;
   cursor: pointer;
+  box-shadow: ${({ isOpen }) =>
+    isOpen ? "0 0 10px 2px #31a396aa" : "none"};
+
+  transform: ${({ $hidden }) =>
+    $hidden ? "translateY(-100%)" : "translateY(0)"};
+  opacity: ${({ $hidden }) => ($hidden ? 0 : 1)};
   transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
     background 0.3s,
+    box-shadow 0.3s ease,
+    border 0.3s ease,
     left 0.3s ease;
 
   &:hover {
-    background-color: ${({ isOpen }) => (isOpen ? "#05201698" : "#0ab97998")};
+    background-color: ${({ isOpen }) => (isOpen ? "#2a9689ff" : "#666666ff")};
+  }
+
+  @media (max-width: 1024px) {
+    top: 27px;
+    left: ${({ isOpen }) => (isOpen ? "230px" : "60px")};
+  }
+
+  @media (max-width: 600px) {
+    top: 20px;
+    left: ${({ isOpen }) => (isOpen ? "230px" : "22px")};
+    padding: 0 8px;
   }
 
   @media (max-width: 480px) {
+    top: 20px;
     left: ${({ isOpen }) => (isOpen ? "170px" : "20px")};
     padding: 0 8px;
   }
+
+  .icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    transform: ${({ isOpen }) => (isOpen ? "rotate(90deg)" : "rotate(0deg)")};
+  }
 `;
+
 
 export const ContainerPerfil = styled.div<{ isOpen: boolean }>`
   position: fixed;

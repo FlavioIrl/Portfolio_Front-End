@@ -1,6 +1,6 @@
 import { GalleryContainer } from "./styles"
 
-const Gallery = () => {
+const SobreMim = () => {
     return (
         <GalleryContainer>
             <h1>Projeto</h1>
@@ -8,4 +8,4 @@ const Gallery = () => {
     )
 }
 
-export default Gallery
+export default SobreMim

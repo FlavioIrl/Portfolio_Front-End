@@ -38,11 +38,32 @@ const Perfil = () => {
       });
   }, []);
 
+  const [hidePerfil, setHidePerfil] = useState(true);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setHidePerfil(false);
+      } else {
+        setHidePerfil(true);
+      }
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      <ToggleButton isOpen={isOpen} onClick={() => setIsOpen((prev) => !prev)}>
-        ☰
+      <ToggleButton isOpen={isOpen} onClick={() => setIsOpen((prev) => !prev)} $hidden={!isOpen && hidePerfil}>
+          <span className="icon">☰</span>
+
       </ToggleButton>
+      
       <ContainerPerfil isOpen={isOpen}>
         <SideBar>
           {userData ? (
