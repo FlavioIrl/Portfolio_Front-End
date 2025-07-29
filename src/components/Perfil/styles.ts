@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
-export const ToggleButton = styled.button<{ isOpen: boolean; $hidden?: boolean }>`
+export const ToggleButton = styled.button<{
+  isOpen: boolean;
+  $hidden?: boolean;
+}>`
   position: fixed;
   top: 20px;
   left: ${({ isOpen }) => (isOpen ? "220px" : "20px")};
-  background-color: ${({ isOpen }) => (isOpen ? "#31a396ff" : "#353535")};
+  background-color: ${({ isOpen }) => (isOpen ? "#2e2e2eff" : "#353535")};
   color: white;
   font-size: clamp(1.5em, 3vw, 2.2em);
   border: ${({ isOpen }) => (isOpen ? "2px solid #38bdae" : "none")};
@@ -12,8 +15,7 @@ export const ToggleButton = styled.button<{ isOpen: boolean; $hidden?: boolean }
   padding: 0 10px;
   z-index: 1001;
   cursor: pointer;
-  box-shadow: ${({ isOpen }) =>
-    isOpen ? "0 0 10px 2px #31a396aa" : "none"};
+  box-shadow: ${({ isOpen }) => (isOpen ? "0 0 10px 2px #31a396aa" : "none")};
 
   transform: ${({ $hidden }) =>
     $hidden ? "translateY(-100%)" : "translateY(0)"};
@@ -21,13 +23,14 @@ export const ToggleButton = styled.button<{ isOpen: boolean; $hidden?: boolean }
   transition:
     transform 0.3s ease,
     opacity 0.3s ease,
-    background 0.3s,
-    box-shadow 0.3s ease,
+    background 0.5s,
+    box-shadow 1s ease,
     border 0.3s ease,
     left 0.3s ease;
 
   &:hover {
-    background-color: ${({ isOpen }) => (isOpen ? "#2a9689ff" : "#666666ff")};
+    background-color: ${({ isOpen }) => (isOpen ? "#2a9689ff" : "#383838ff")};
+    box-shadow: 0 0 10px 5px #31a396aa;
   }
 
   @media (max-width: 1024px) {
@@ -50,10 +53,8 @@ export const ToggleButton = styled.button<{ isOpen: boolean; $hidden?: boolean }
   .icon {
     display: inline-block;
     transition: transform 0.3s ease;
-    transform: ${({ isOpen }) => (isOpen ? "rotate(90deg)" : "rotate(0deg)")};
   }
 `;
-
 
 export const ContainerPerfil = styled.div<{ isOpen: boolean }>`
   position: fixed;
@@ -61,7 +62,7 @@ export const ContainerPerfil = styled.div<{ isOpen: boolean }>`
   left: ${({ isOpen }) => (isOpen ? "0" : "-280px")};
   width: 280px;
   height: 100vh;
-  background-color: #38bdae;
+  background-color: #252525ff;
   font-family: "Roboto", sans-serif;
   color: #fff;
   transition: left 0.3s ease;
@@ -194,23 +195,29 @@ export const LinkIcon = styled.a`
   border: none;
   margin: 5px;
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 1s ease;
 
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.5);
+    box-shadow: 0 0 10px 2px #6eb6adff;
   }
 `;
 
 export const ButtonLink = styled.button`
-  background-color: #1a1b27;
+  background-color: #38bdae;
   border: none;
   padding: 8px 30px;
   border-radius: 5px;
   font-size: clamp(14px, 2.5vw, 16px);
   font-weight: bold;
-  color: #fff;
+  color: #000;
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 1s ease,
+    color 1s ease;
 
   .bi-github {
     margin-left: 8px;
@@ -218,6 +225,9 @@ export const ButtonLink = styled.button`
 
   &:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 10px 2px #31a396aa;
+  color: #fff;
+
   }
 
   a {

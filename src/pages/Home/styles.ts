@@ -14,6 +14,9 @@ export const ListaGallegyWrapper = styled.div`
 
 export const HomeContainer = styled.div`
   padding-top: 90px;
-    margin-bottom: 1000px;
+  background-color: #6d6d6d;
 
+  @media (max-width: 650px) {
+    padding-top: 60px;
+  }
 `;

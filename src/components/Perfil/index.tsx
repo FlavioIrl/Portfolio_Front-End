@@ -21,9 +21,13 @@ type GithubUser = {
   html_url: string;
 };
 
-const Perfil = () => {
+type PerfilProps = {
+  isOpen: boolean;
+  setIsOpen: (value: boolean) => void;
+};
+
+const Perfil = ({ isOpen, setIsOpen }: PerfilProps) => {
   const [userData, setUserData] = useState<GithubUser | null>(null);
-  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const endpoint = "https://api.github.com/users/FlavioIrl";
@@ -41,30 +45,39 @@ const Perfil = () => {
   const [hidePerfil, setHidePerfil] = useState(true);
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
+  let lastScrollY = window.scrollY;
 
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setHidePerfil(false);
-      } else {
-        setHidePerfil(true);
-      }
-      lastScrollY = currentScrollY;
-    };
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    if (currentScrollY <= 10) {
+      setHidePerfil(true);
+      return;
+    }
+
+    if (currentScrollY > lastScrollY && currentScrollY > 50) {
+      setHidePerfil(false);
+    }
+
+    lastScrollY = currentScrollY;
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+  
 
   return (
     <>
-      <ToggleButton isOpen={isOpen} onClick={() => setIsOpen((prev) => !prev)} $hidden={!isOpen && hidePerfil}>
-          <span className="icon">☰</span>
-
+      <ToggleButton
+        isOpen={isOpen}
+        onClick={() => setIsOpen(!isOpen)}
+        $hidden={!isOpen && hidePerfil}
+      >
+        <span className="icon">☰</span>
       </ToggleButton>
       
-      <ContainerPerfil isOpen={isOpen}>
+      <ContainerPerfil isOpen={isOpen} id="contatos">
         <SideBar>
           {userData ? (
             <InfoPerfil>
@@ -79,6 +92,7 @@ const Perfil = () => {
                 <h2 id="repository">{userData.public_repos}</h2>
               </Repositorio>
               <LinksContatos>
+              <p >Meus contatos</p>
                 <LinkIcon
                   className="linkedinIcon"
                   title="Contato"

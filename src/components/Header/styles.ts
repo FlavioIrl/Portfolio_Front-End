@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  background-color: #6d6d6d;
+`;
+
 export const NavHeader = styled.nav<{ $hidden: boolean }>`
   position: fixed;
   top: 0;
@@ -125,11 +132,18 @@ export const NavUl = styled.ul`
     white-space: nowrap;
 
     a {
+      transition:
+        transform 0.3s ease,
+        text-shadow 0.3s ease;
       font-size: clamp(0.6rem, 2vw, 1rem);
       font-weight: bold;
       color: #fff;
       text-decoration: none;
       padding: 8px 0;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
 
     &:first-child {
