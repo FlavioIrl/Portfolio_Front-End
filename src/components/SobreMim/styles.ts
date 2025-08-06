@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 export const ContainerSobre = styled.div`
-  background-color: #6d6d6d;
+  background-color: #444444ff;
   width: 100%;
   color: #fff;
   display: flex;

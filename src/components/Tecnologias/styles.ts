@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface TechDescriptionProps {
+  shadowcolor?: string;
+}
+
 export const TechItem = styled.div`
   position: relative;
   width: 400px;
@@ -180,7 +184,7 @@ export const TechItem = styled.div`
   }
 `;
 
-export const TechDescription = styled.p`
+export const TechDescription = styled.p<TechDescriptionProps>`
   margin-top: 0;
   border-radius: 10px;
   width: 48%;
@@ -190,13 +194,21 @@ export const TechDescription = styled.p`
   color: #f0f0f0;
   font-size: clamp(16px, 2.5vw, 20px);
   line-height: 1.6;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: left;
+  transition: box-shadow 0.3s ease;
+
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    0 0 20px
+      ${(props) =>
+        props.shadowcolor
+          ? props.shadowcolor + "80"
+          : "rgba(0, 131, 143, 0.4)"};
 
   strong {
-    color: #00838f;
+    color: ${(props) => props.shadowcolor || "#00a1afff"};
+    transition: color 0.3s ease;
   }
-
   @media (max-width: 768px) {
     font-size: 1.1em;
     padding: 15px;

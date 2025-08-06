@@ -5,33 +5,39 @@ const Tecnologias = () => {
   const [selectedTechText, setSelectedTechText] = useState(
     `<strong>Descubra mais sobre minhas habilidades</strong>: ao clicar nos ícones, você verá uma descrição aprofundada de cada tecnologia. Minha jornada, assim como este portfólio, está em <strong>contínua evolução</strong>, e já estou focado em expandir meu conhecimento para o back-end, visando uma formação abrangente.`
   );
+  // NOVO ESTADO PARA A COR DA SOMBRA
+  const [shadowColor, setShadowColor] = useState("rgba(0, 131, 143, 0.4)"); // Cor inicial, opcionalmente a cor do seu strong padrão
 
   // Objeto com as descrições de cada tecnologia
   const techDescriptions = {
-    IconHtml5:
-      `<strong>HTML5</strong> é a linguagem de marcação padrão para criar e estruturar conteúdo na web. É a base de qualquer página web moderna.`,
-    IconJS:
-      "**JavaScript** é uma linguagem de programação versátil, essencial para criar interatividade e dinamismo em websites. É a espinha dorsal do desenvolvimento front-end.",
-    IconGulp:
-      "**Gulp** é um toolkit JavaScript de código aberto que automatiza tarefas demoradas no desenvolvimento, como minificação de arquivos e compilação de CSS.",
-    IconBoots:
-      "**Bootstrap** é um framework de código aberto para desenvolvimento front-end, que facilita a criação de sites responsivos e mobile-first com componentes pré-construídos.",
-    IconPython:
-      "**Python** é uma linguagem de programação de alto nível, interpretada, de script, imperativa, orientada a objetos, funcional e multiparadigma. Embora mais conhecida no back-end e ciência de dados, sua versatilidade permite integração em diversas áreas.",
-    IconReact:
-      "**React** é uma biblioteca JavaScript declarativa, eficiente e flexível para criar interfaces de usuário interativas. Permite construir componentes reutilizáveis e gerenciar o estado da aplicação de forma eficiente.",
-    IconVSCode:
-      "**VS Code** (Visual Studio Code) é um editor de código-fonte leve, mas poderoso, desenvolvido pela Microsoft. Possui uma vasta gama de extensões que o tornam ideal para o desenvolvimento web.",
-    IconSass:
-      "**Sass** (Syntactically Awesome Style Sheets) é um pré-processador CSS que adiciona recursos como variáveis, mixins e funções, tornando a escrita de CSS mais eficiente e organizada.",
-    IconNodeJS:
-      "**Node.js** é um ambiente de tempo de execução JavaScript de código aberto e multiplataforma para o lado do servidor, permitindo executar JavaScript fora do navegador. É fundamental para o desenvolvimento full-stack.",
+    IconHtml5: `<strong className="HTML5">HTML5</strong> e <strong className="CSS3">CSS3</strong> formam a base essencial para a construção e estilização de conteúdo web. Dominando a aplicação das suas funcionalidades principais, sou capaz de criar layouts modernos, responsivos e visualmente atraentes.`,
+    IconJS: `Sendo a principal linguagem de programação para a web, o domínio de <strong>JavaScript</strong> é essencial para criar interatividade e dinamismo nas páginas. Minha dedicação me levou a explorar e aplicar suas diversas funcionalidades lógicas, transformando ideias em experiências web ricas e responsivas.`,
+    IconGulp: `O <strong>Gulp</strong> é uma ferramenta valiosa para a otimização e automação de processos no front-end. Assim como o <strong>Grunt.js</strong>, que possui funcionalidades semelhantes, utilizei seus recursos em diversos projetos para agilizar o desenvolvimento. Ambas são cruciais para automatizar tarefas como a minificação de arquivos e a compilação de CSS, resultando em páginas mais leves e performáticas.`,
+    IconBoots: `Uma das bibliotecas que mais apreciei trabalhar é o <strong>Bootstrap</strong>. Suas funcionalidades foram aplicadas, inclusive, neste portfólio, otimizando e facilitando meu trabalho e poupando muitas horas de desenvolvimento.`,
+    IconPython: `<strong>Python</strong> é, atualmente, meu principal foco de estudos. Assim como este portfólio, minhas habilidades nessa linguagem estão em constante desenvolvimento, e estou entusiasmado para aplicá-las em futuros projetos.`,
+    IconReact: `<strong>React</strong> foi uma biblioteca que rapidamente se tornou minha preferida para o desenvolvimento de interfaces. Sua estrutura organizada e eficiente reflete minha própria abordagem ao código, fazendo dela uma escolha natural para meus projetos.`,
+    IconVSCode: `<strong>VS Code</strong> é meu principal editor de código, valorizado por sua leveza e facilidade de uso. Sua interface intuitiva e a vasta gama de extensões otimizam meu fluxo de trabalho, tornando-o essencial para minha produtividade no desenvolvimento.`,
+    IconSass: `<strong>Sass</strong>: Um pré-processador CSS que tive a oportunidade de explorar em projetos, reconhecendo sua capacidade de tornar a escrita de estilos mais organizada e eficiente por meio de recursos avançados, como variáveis e mixins.`,
+    IconNodeJS: `Minha experiência com <strong className="NodeJS">Node.js</strong> envolve seu uso como ambiente de execução JavaScript. Ele é crucial para iniciar meus projetos e lidar com operações no servidor, sendo uma ferramenta constante no meu desenvolvimento web.`,
+  };
+
+  const techColors = {
+    IconHtml5: "#e44d26",
+    IconJS: "#f7df1e",
+    IconGulp: "#cf4647",
+    IconBoots: "#7952b3",
+    IconPython: "#306998",
+    IconReact: "#61dafb",
+    IconVSCode: "#007acc",
+    IconSass: "#cc6699",
+    IconNodeJS: "#68a063",
   };
 
   const handleIconClick = (techName: keyof typeof techDescriptions) => {
     setSelectedTechText(
       techDescriptions[techName] || "Descrição não disponível."
     );
+    setShadowColor(techColors[techName] || "rgba(0, 131, 143, 0.4)");
   };
 
   return (
@@ -39,6 +45,7 @@ const Tecnologias = () => {
       <div className="content-wrapper">
         <h2>Tecnologias</h2>
         <TechDescription
+          shadowcolor={shadowColor}
           dangerouslySetInnerHTML={{ __html: selectedTechText }}
         />
 
