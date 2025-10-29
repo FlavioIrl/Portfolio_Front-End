@@ -3,10 +3,10 @@ import { useState } from "react";
 
 const Tecnologias = () => {
   const [selectedTechText, setSelectedTechText] = useState(
-    `<strong>Descubra mais sobre minhas habilidades</strong>: ao clicar nos ícones, você verá uma descrição aprofundada de cada tecnologia. Minha jornada, assim como este portfólio, está em <strong>contínua evolução</strong>, e já estou focado em expandir meu conhecimento para o back-end, visando uma formação abrangente.`
+    `<strong class="text-center d-block">Descubra mais sobre minhas habilidades</strong><br> Ao <strong>clicar</strong> nos ícones, você verá uma descrição aprofundada de cada tecnologia. Minha jornada, assim como este portfólio, está em <strong>contínua evolução</strong>, e já estou focado em expandir meu conhecimento para o back-end, visando uma formação abrangente.`
   );
   // NOVO ESTADO PARA A COR DA SOMBRA
-  const [shadowColor, setShadowColor] = useState("rgba(0, 131, 143, 0.4)"); // Cor inicial, opcionalmente a cor do seu strong padrão
+  const [shadowColor, setShadowColor] = useState("rgba(0, 181, 197, 1)"); // Cor inicial, opcionalmente a cor do seu strong padrão
 
   // Objeto com as descrições de cada tecnologia
   const techDescriptions = {
@@ -44,11 +44,6 @@ const Tecnologias = () => {
     <TechContainer id="tecnologias">
       <div className="content-wrapper">
         <h2>Tecnologias</h2>
-        <TechDescription
-          shadowcolor={shadowColor}
-          dangerouslySetInnerHTML={{ __html: selectedTechText }}
-        />
-
         <div className="tech-carousel">
           <TechItem>
             <svg
@@ -151,6 +146,12 @@ const Tecnologias = () => {
             </svg>
           </TechItem>
         </div>
+        <TechDescription
+          shadowcolor={shadowColor}
+          dangerouslySetInnerHTML={{ __html: selectedTechText }}
+        />
+
+        
       </div>
     </TechContainer>
   );

@@ -1,263 +1,178 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface TechDescriptionProps {
   shadowcolor?: string;
 }
 
+const ICONS = [
+  { cls: "IconHtml5",  angle:   0, color: "#e44d26" },
+  { cls: "IconJS",     angle:  40, color: "#f7df1e" },
+  { cls: "IconGulp",   angle:  80, color: "#cf4647" },
+  { cls: "IconBoots",  angle: 120, color: "#7952b3" },
+  { cls: "IconPython", angle: 160, color: "#306998" },
+  { cls: "IconReact",  angle: 200, color: "#61dafb" },
+  { cls: "IconVSCode", angle: 240, color: "#007acc" },
+  { cls: "IconSass",   angle: 280, color: "#cc6699" },
+  { cls: "IconNodeJS", angle: 320, color: "#68a063" },
+];
+
+
+//
+// 2) O “wheel” de ícones
+//
 export const TechItem = styled.div`
+  /*  Aumentei de 400px para 500px  */
+  --wheel-size: 500px;
+  /*  Offset (distância do centro) ajustado para caber tudo  */
+  --icon-offset: -200px;
+  /*  opcional: aumentar também o ícone um pouco  */
+  --icon-size: 80px;
+
   position: relative;
-  width: 400px;
-  height: 400px;
-
+  width:  var(--wheel-size);
+  height: var(--wheel-size);
   display: flex;
-  justify-content: center;
   align-items: center;
-
-  span {
-    color: #e0e0e0;
-    font-size: 16px;
-    font-weight: 500;
-    position: absolute;
-  }
+  justify-content: center;
 
   .Icons {
-    width: 70px;
-    height: 70px;
-    transition:
-      filter 0.3s ease,
-      fill 0.3s ease,
-      transform 0.3s ease-in-out;
-    cursor: pointer;
     position: absolute;
-    transform: translate(-50%, -50%);
+    top: 50%; left: 50%;
+    width:  var(--icon-size);
+    height: var(--icon-size);
+    transform-origin: center;
+    cursor: pointer;
+    transition: filter .3s, fill .3s, transform .3s ease-in-out;
   }
 
-  .IconHtml5 {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) translateY(-150px);
-    fill: #e44d26;
-    filter: drop-shadow(0px 0px 8px rgba(228, 77, 38, 0.4))
-      drop-shadow(0px 0px 3px rgba(179, 58, 28, 0.3));
-    &:hover {
-      filter: drop-shadow(0px 0px 15px rgba(228, 77, 38, 1))
-        drop-shadow(0px 0px 30px rgba(179, 58, 28, 0.8));
-      fill: #ffffff;
-      transform: translate(-50%, -50%) translateY(-150px) scale(1.1);
-    }
-  }
+  ${ICONS.map(
+    ({ cls, angle, color }) => css`
+      .${cls} {
+        transform:
+          translate(-50%, -50%)
+          rotate(${angle}deg)
+          translateY(var(--icon-offset))
+          rotate(-${angle}deg);
+        fill: ${color};
+        filter:
+          drop-shadow(0 0 8px ${color}66)
+          drop-shadow(0 0 3px ${color}4d);
 
-  .IconJS {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(40deg) translateY(-150px)
-      rotate(-40deg);
-    fill: #f7df1e;
-    filter: drop-shadow(0px 0px 8px rgba(247, 223, 30, 0.4))
-      drop-shadow(0px 0px 3px rgba(189, 172, 23, 0.3));
-    &:hover {
-      filter: drop-shadow(0px 0px 15px rgba(247, 223, 30, 1))
-        drop-shadow(0px 0px 30px rgba(189, 172, 23, 0.8));
-      fill: #ffffff;
-      transform: translate(-50%, -50%) rotate(40deg) translateY(-150px)
-        rotate(-40deg) scale(1.1);
-    }
-  }
+        &:hover {
+          filter:
+            drop-shadow(0 0 15px ${color})
+            drop-shadow(0 0 30px ${color}cc);
+          fill: #fff;
+          transform:
+            translate(-50%, -50%)
+            rotate(${angle}deg)
+            translateY(var(--icon-offset))
+            rotate(-${angle}deg)
+            scale(1.1);
+        }
+      }
+    `
+  )}
 
-  .IconGulp {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(80deg) translateY(-150px)
-      rotate(-80deg);
-    fill: #cf4647;
-    filter: drop-shadow(0px 0px 8px rgba(207, 70, 71, 0.4))
-      drop-shadow(0px 0px 3px rgba(150, 48, 49, 0.3));
-    &:hover {
-      filter: drop-shadow(0px 0px 15px rgba(207, 70, 71, 1))
-        drop-shadow(0px 0px 30px rgba(150, 48, 49, 0.8));
-      fill: #ffffff;
-      transform: translate(-50%, -50%) rotate(80deg) translateY(-150px)
-        rotate(-80deg) scale(1.1);
-    }
+  /* responsivo: você pode rebaixar os valores para telas menores */
+  @media (max-width: 992px) {
+    --wheel-size: 450px;
+    --icon-offset: -180px;
   }
-
-  .IconBoots {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(120deg) translateY(-150px)
-      rotate(-120deg);
-    fill: #7952b3;
-    filter: drop-shadow(0px 0px 8px rgba(121, 82, 179, 0.4))
-      drop-shadow(0px 0px 3px rgba(90, 62, 134, 0.3));
-    &:hover {
-      filter: drop-shadow(0px 0px 15px rgba(121, 82, 179, 1))
-        drop-shadow(0px 0px 30px rgba(90, 62, 134, 0.8));
-      fill: #ffffff;
-      transform: translate(-50%, -50%) rotate(120deg) translateY(-150px)
-        rotate(-120deg) scale(1.1);
-    }
+  @media (max-width: 768px) {
+    --wheel-size: 400px;
+    --icon-offset: -160px;
   }
-
-  .IconPython {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(160deg) translateY(-150px)
-      rotate(-160deg);
-    fill: #306998;
-    filter: drop-shadow(0px 0px 8px rgba(48, 105, 152, 0.4))
-      drop-shadow(0px 0px 3px rgba(36, 79, 114, 0.3));
-    &:hover {
-      filter: drop-shadow(0px 0px 15px rgba(48, 105, 152, 1))
-        drop-shadow(0px 0px 30px rgba(36, 79, 114, 0.8));
-      fill: #ffffff;
-      transform: translate(-50%, -50%) rotate(160deg) translateY(-150px)
-        rotate(-160deg) scale(1.1);
-    }
-  }
-
-  .IconReact {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(200deg) translateY(-150px)
-      rotate(-200deg);
-    fill: #61dafb;
-    filter: drop-shadow(0px 0px 8px rgba(97, 218, 251, 0.4))
-      drop-shadow(0px 0px 3px rgba(73, 164, 188, 0.3));
-    &:hover {
-      filter: drop-shadow(0px 0px 15px rgba(97, 218, 251, 1))
-        drop-shadow(0px 0px 30px rgba(73, 164, 188, 0.8));
-      fill: #ffffff;
-      transform: translate(-50%, -50%) rotate(200deg) translateY(-150px)
-        rotate(-200deg) scale(1.1);
-    }
-  }
-
-  .IconVSCode {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(240deg) translateY(-150px)
-      rotate(-240deg);
-    fill: #007acc;
-    filter: drop-shadow(0px 0px 8px rgba(0, 122, 204, 0.4))
-      drop-shadow(0px 0px 3px rgba(0, 92, 153, 0.3));
-    &:hover {
-      filter: drop-shadow(0px 0px 15px rgba(0, 122, 204, 1))
-        drop-shadow(0px 0px 30px rgba(0, 92, 153, 0.8));
-      fill: #ffffff;
-      transform: translate(-50%, -50%) rotate(240deg) translateY(-150px)
-        rotate(-240deg) scale(1.1);
-    }
-  }
-
-  .IconSass {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(280deg) translateY(-150px)
-      rotate(-280deg);
-    fill: #cc6699;
-    filter: drop-shadow(0px 0px 8px rgba(204, 102, 153, 0.4))
-      drop-shadow(0px 0px 3px rgba(153, 76, 115, 0.3));
-    &:hover {
-      filter: drop-shadow(0px 0px 15px rgba(204, 102, 153, 1))
-        drop-shadow(0px 0px 30px rgba(153, 76, 115, 0.8));
-      fill: #ffffff;
-      transform: translate(-50%, -50%) rotate(280deg) translateY(-150px)
-        rotate(-280deg) scale(1.1);
-    }
-  }
-
-  .IconNodeJS {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(320deg) translateY(-150px)
-      rotate(-320deg);
-    fill: #68a063;
-    filter: drop-shadow(0px 0px 8px rgba(104, 160, 99, 0.4))
-      drop-shadow(0px 0px 3px rgba(78, 120, 74, 0.3));
-    &:hover {
-      filter: drop-shadow(0px 0px 15px rgba(104, 160, 99, 1))
-        drop-shadow(0px 0px 30px rgba(78, 120, 74, 0.8));
-      fill: #ffffff;
-      transform: translate(-50%, -50%) rotate(320deg) translateY(-150px)
-        rotate(-320deg) scale(1.1);
-    }
+  @media (max-width: 480px) {
+    --wheel-size: 350px;
+    --icon-offset: -140px;
+    --icon-size: 70px; /* você pode até voltar o ícone a 70px aqui */
   }
 `;
 
+
+
+  
+//
+// 3) Descrição com box-shadow dinâmico
+//
 export const TechDescription = styled.p<TechDescriptionProps>`
-  margin-top: 0;
+  margin-top: 30px;
+  width: 48%; max-width: 800px;
+  padding: 50px;
   border-radius: 10px;
-  width: 48%;
-  max-width: 800px;
-  padding: 30px;
-  background-color: #323232;
+  background: #323232;
   color: #f0f0f0;
   font-size: clamp(16px, 2.5vw, 20px);
   line-height: 1.6;
   text-align: left;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow .3s ease;
 
   box-shadow:
-    0 4px 8px rgba(0, 0, 0, 0.2),
-    0 0 20px
-      ${(props) =>
-        props.shadowcolor
-          ? props.shadowcolor + "80"
-          : "rgba(0, 131, 143, 0.4)"};
+    0px 0px 8px #181818,
+    0 0 61px ${p => {
+      const c = p.shadowcolor ?? "#00838f";
+      // se vier hex de 7 chars, concatena alfa
+      if (c.startsWith("#") && c.length === 7) return c + "80";
+      // se vier rgba(), força opacidade 0.5
+      return c.replace(
+        /rgba\(([^,]+,[^,]+,[^,]+),\s*[^)]+\)/,
+        "rgba($1,0.5)"
+      );
+    }};
 
   strong {
-    color: ${(props) => props.shadowcolor || "#00a1afff"};
-    transition: color 0.3s ease;
-  }
-  @media (max-width: 768px) {
-    font-size: 1.1em;
-    padding: 15px;
-    min-height: 100px;
-    margin-bottom: 30px;
+    color: ${p => p.shadowcolor ?? "#00a1afff"};
+    transition: color .3s ease;
   }
 
+  @media (max-width: 768px) {
+    width: 70%;
+    padding: 30px;
+    margin-bottom: 30px;
+  }
   @media (max-width: 480px) {
-    font-size: 1em;
     padding: 10px;
-    min-height: 120px;
     margin-bottom: 20px;
+    font-size: 1em;
   }
 `;
 
-export const TechContainer = styled.div`
-  background-color: #1b1b1b;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 80px 20px;
-  box-sizing: border-box;
-  flex-direction: column;
 
-  .content-wrapper {
-    max-width: 1200px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    text-align: left;
-    flex-wrap: wrap;
-  }
+//
+// 4) Container geral
+//
+export const TechContainer = styled.div`
+  background: #1b1b1b;
+  width: 100%;
+  min-height: 70vh;
+  padding: 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   h2 {
-    font-weight: bold;
-    color: #38bdae;
-    font-size: clamp(40px, 6vw, 60px);
-    margin-bottom: 20px;
     width: 100%;
+    margin-bottom: 20px;
     text-align: center;
+    font-size: clamp(40px, 6vw, 60px);
+    color: #38bdae;
+    font-weight: bold;
   }
 
-  ${TechItem}.tech-wheel-container {
-    width: 400px;
-    height: 400px;
+  .content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* quando usar <TechItem className="tech-wheel-container"> */
+  & .tech-wheel-container {
     flex-shrink: 0;
   }
 
@@ -266,77 +181,10 @@ export const TechContainer = styled.div`
       flex-direction: column;
       align-items: center;
     }
-
     .description {
       width: 90%;
       margin-bottom: 40px;
       text-align: center;
-    }
-
-    ${TechItem}.tech-wheel-container {
-      width: 350px;
-      height: 350px;
-      margin-top: 40px;
-    }
-    .Icons {
-      &.IconHtml5 {
-        transform: translate(-50%, -50%) translateY(-120px);
-        &:hover {
-          transform: translate(-50%, -50%) translateY(-120px) scale(1.1);
-        }
-      }
-    }
-  }
-
-  @media (max-width: 768px) {
-    h2 {
-      font-size: 40px;
-    }
-
-    .description {
-      width: 95%;
-      padding: 20px;
-      font-size: 16px;
-    }
-
-    ${TechItem}.tech-wheel-container {
-      width: 300px;
-      height: 300px;
-    }
-
-    .Icons {
-      &.IconHtml5 {
-        transform: translate(-50%, -50%) translateY(-100px);
-        &:hover {
-          transform: translate(-50%, -50%) translateY(-100px) scale(1.1);
-        }
-      }
-    }
-  }
-
-  @media (max-width: 480px) {
-    h2 {
-      font-size: 35px;
-    }
-
-    .description {
-      width: 100%;
-      padding: 15px;
-      font-size: 15px;
-    }
-
-    ${TechItem}.tech-wheel-container {
-      width: 250px;
-      height: 250px;
-    }
-
-    .Icons {
-      &.IconHtml5 {
-        transform: translate(-50%, -50%) translateY(-80px);
-        &:hover {
-          transform: translate(-50%, -50%) translateY(-80px) scale(1.1);
-        }
-      }
     }
   }
 `;
