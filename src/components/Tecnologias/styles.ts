@@ -17,16 +17,16 @@ const ICONS = [
 ];
 
 
+
+
 //
 // 2) O “wheel” de ícones
 //
 export const TechItem = styled.div`
-  /*  Aumentei de 400px para 500px  */
-  --wheel-size: 500px;
-  /*  Offset (distância do centro) ajustado para caber tudo  */
-  --icon-offset: -200px;
-  /*  opcional: aumentar também o ícone um pouco  */
-  --icon-size: 80px;
+  /* variáveis para tamanho da roda e offset dos ícones */
+  --wheel-size: 400px;
+  --icon-offset: -150px;
+  --icon-size: 70px;
 
   position: relative;
   width:  var(--wheel-size);
@@ -35,6 +35,7 @@ export const TechItem = styled.div`
   align-items: center;
   justify-content: center;
 
+  /* base comum a TODOS os ícones */
   .Icons {
     position: absolute;
     top: 50%; left: 50%;
@@ -45,6 +46,9 @@ export const TechItem = styled.div`
     transition: filter .3s, fill .3s, transform .3s ease-in-out;
   }
 
+  
+
+  /* para cada tecnologia, injeta transform, cor e sombras */
   ${ICONS.map(
     ({ cls, angle, color }) => css`
       .${cls} {
@@ -58,7 +62,8 @@ export const TechItem = styled.div`
           drop-shadow(0 0 8px ${color}66)
           drop-shadow(0 0 3px ${color}4d);
 
-        &:hover {
+        &:hover,
+        &:active {
           filter:
             drop-shadow(0 0 15px ${color})
             drop-shadow(0 0 30px ${color}cc);
@@ -74,23 +79,11 @@ export const TechItem = styled.div`
     `
   )}
 
-  /* responsivo: você pode rebaixar os valores para telas menores */
-  @media (max-width: 992px) {
-    --wheel-size: 450px;
-    --icon-offset: -180px;
-  }
-  @media (max-width: 768px) {
-    --wheel-size: 400px;
-    --icon-offset: -160px;
-  }
-  @media (max-width: 480px) {
-    --wheel-size: 350px;
-    --icon-offset: -140px;
-    --icon-size: 70px; /* você pode até voltar o ícone a 70px aqui */
-  }
+  /* responsivo: só ajusta o tamanho da roda e o offset dos ícones */
+  @media (max-width: 992px) { --wheel-size: 350px; --icon-offset: -120px; }
+  @media (max-width: 768px) { --wheel-size: 300px; --icon-offset: -100px; }
+  @media (max-width: 480px) { --wheel-size: 250px; --icon-offset: -80px; }
 `;
-
-
 
   
 //
@@ -110,7 +103,8 @@ export const TechDescription = styled.p<TechDescriptionProps>`
 
   box-shadow:
     0px 0px 8px #181818,
-    0 0 61px ${p => {
+    0px 0px 8px rgba(0,0,0,.9),
+    0 0 20px ${p => {
       const c = p.shadowcolor ?? "#00838f";
       // se vier hex de 7 chars, concatena alfa
       if (c.startsWith("#") && c.length === 7) return c + "80";
