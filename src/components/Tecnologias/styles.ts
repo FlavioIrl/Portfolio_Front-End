@@ -9,7 +9,7 @@ const ICONS = [
   { cls: "IconJS",     angle:  40, color: "#f7df1e" },
   { cls: "IconGulp",   angle:  80, color: "#cf4647" },
   { cls: "IconBoots",  angle: 120, color: "#7952b3" },
-  { cls: "IconPython", angle: 160, color: "#306998" },
+  { cls: "IconPython", angle: 160, color: "#5ab3fc" },
   { cls: "IconReact",  angle: 200, color: "#61dafb" },
   { cls: "IconVSCode", angle: 240, color: "#007acc" },
   { cls: "IconSass",   angle: 280, color: "#cc6699" },
@@ -62,8 +62,9 @@ export const TechItem = styled.div`
           drop-shadow(0 0 8px ${color}66)
           drop-shadow(0 0 3px ${color}4d);
 
+        /* ADICIONADO: .active junto com :hover */
         &:hover,
-        &:active {
+        &.active { 
           filter:
             drop-shadow(0 0 15px ${color})
             drop-shadow(0 0 30px ${color}cc);
@@ -108,7 +109,6 @@ export const TechDescription = styled.p<TechDescriptionProps>`
       const c = p.shadowcolor ?? "#00838f";
       // se vier hex de 7 chars, concatena alfa
       if (c.startsWith("#") && c.length === 7) return c + "80";
-      // se vier rgba(), força opacidade 0.5
       return c.replace(
         /rgba\(([^,]+,[^,]+,[^,]+),\s*[^)]+\)/,
         "rgba($1,0.5)"

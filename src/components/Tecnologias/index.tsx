@@ -12,15 +12,32 @@ const Tecnologias = () => {
 
   // Objeto com as descrições de cada tecnologia
   const techDescriptions = {
-    IconHtml5: `<strong class="HTML5">HTML5</strong> e <strong class="CSS3">CSS3</strong> formam a base essencial para a construção e estilização de conteúdo web. Dominando a aplicação das suas funcionalidades principais, sou capaz de criar layouts modernos, responsivos e visualmente atraentes.`,
-    IconJS: `Sendo a principal linguagem de programação para a web, o domínio de <strong>JavaScript</strong> é essencial para criar interatividade e dinamismo nas páginas. Minha dedicação me levou a explorar e aplicar suas diversas funcionalidades lógicas, transformando ideias em experiências web ricas e responsivas.`,
-    IconGulp: `O <strong>Gulp</strong> é uma ferramenta valiosa para a otimização e automação de processos no front-end. Assim como o <strong>Grunt.js</strong>, que possui funcionalidades semelhantes, utilizei seus recursos em diversos projetos para agilizar o desenvolvimento. Ambas são cruciais para automatizar tarefas como a minificação de arquivos e a compilação de CSS, resultando em páginas mais leves e performáticas.`,
-    IconBoots: `Uma das bibliotecas que mais apreciei trabalhar é o <strong>Bootstrap</strong>. Suas funcionalidades foram aplicadas, inclusive, neste portfólio, otimizando e facilitando meu trabalho e poupando muitas horas de desenvolvimento.`,
-    IconPython: `<strong>Python</strong> é, atualmente, meu principal foco de estudos. Assim como este portfólio, minhas habilidades nessa linguagem estão em constante desenvolvimento, e estou entusiasmado para aplicá-las em futuros projetos.`,
-    IconReact: `<strong>React</strong> foi uma biblioteca que rapidamente se tornou minha preferida para o desenvolvimento de interfaces. Sua estrutura organizada e eficiente reflete minha própria abordagem ao código, fazendo dela uma escolha natural para meus projetos.`,
-    IconVSCode: `<strong>VS Code</strong> é meu principal editor de código, valorizado por sua leveza e facilidade de uso. Sua interface intuitiva e a vasta gama de extensões otimizam meu fluxo de trabalho, tornando-o essencial para minha produtividade no desenvolvimento.`,
-    IconSass: `<strong>Sass</strong>: Um pré-processador CSS que tive a oportunidade de explorar em projetos, reconhecendo sua capacidade de tornar a escrita de estilos mais organizada e eficiente por meio de recursos avançados, como variáveis e mixins.`,
-    IconNodeJS: `Minha experiência com <strong class="NodeJS">Node.js</strong> envolve seu uso como ambiente de execução JavaScript. Ele é crucial para iniciar meus projetos e lidar com operações no servidor, sendo uma ferramenta constante no meu desenvolvimento web.`,
+    IconHtml5: 
+      `<strong>HTML5</strong> e <strong>CSS3</strong> são os pilares do desenvolvimento web. Utilizo essas tecnologias para estruturar e estilizar interfaces modernas, garantindo semântica, acessibilidade e layouts totalmente responsivos. <button><buttom>`,
+    
+    IconJS: 
+      `<strong>JavaScript</strong> é a linguagem central para a criação de dinamismo na web. Aplico lógica avançada para desenvolver funcionalidades interativas e experiências de usuário fluidas e eficientes.`,
+    
+    IconGulp: 
+      `O <strong>Gulp</strong> (assim como o Grunt) é fundamental na automação do meu workflow. Utilizo-o para otimizar o desempenho de projetos através da minificação de arquivos, compilação de pré-processadores e automação de tarefas repetitivas.`,
+    
+    IconBoots: 
+      `O <strong>Bootstrap</strong> é um framework poderoso que utilizo para acelerar o desenvolvimento de interfaces. Com ele, garanto consistência visual e agilidade na entrega de projetos responsivos e bem estruturados.`,
+    
+    IconPython: 
+      `<strong>Python</strong> é minha principal ferramenta para lógica de programação e automação. Atualmente, foco na aplicação desta linguagem para expandir minhas habilidades em back-end e análise de dados.`,
+    
+    IconReact: 
+      `<strong>React</strong> é minha biblioteca favorita para a construção de SPAs (Single Page Applications). Utilizo sua arquitetura baseada em componentes para criar interfaces escaláveis, organizadas e de alta performance.`,
+    
+    IconVSCode: 
+      `O <strong>VS Code</strong> é meu ambiente de desenvolvimento principal. Através dele, mantenho um fluxo de trabalho otimizado e produtivo, utilizando extensões que garantem a qualidade e a agilidade da escrita do código.`,
+    
+    IconSass: 
+      `O <strong>Sass</strong> é o pré-processador que utilizo para elevar o nível do CSS. Com recursos como variáveis e mixins, mantenho folhas de estilo muito mais organizadas, reutilizáveis e fáceis de manter.`,
+    
+    IconNodeJS: 
+      `Com o <strong>Node.js</strong>, gerencio ambientes de execução e pacotes essenciais para o desenvolvimento moderno. Ele é a peça-chave para integrar o ecossistema JavaScript tanto no ferramental quanto no lado do servidor.`,
   };
 
   const techColors = {
@@ -28,7 +45,7 @@ const Tecnologias = () => {
     IconJS: "#f7df1e",
     IconGulp: "#cf4647",
     IconBoots: "#7952b3",
-    IconPython: "#306998",
+    IconPython: "#5ab3fc",
     IconReact: "#61dafb",
     IconVSCode: "#007acc",
     IconSass: "#cc6699",
@@ -47,6 +64,10 @@ const Tecnologias = () => {
     <TechContainer id="tecnologias">
       <div className="content-wrapper">
         <h2>Tecnologias</h2>
+        <TechDescription
+          shadowcolor={shadowColor}
+          dangerouslySetInnerHTML={{ __html: selectedTechText }}
+        />
         <div className="tech-carousel">
           <TechItem>
             <svg
@@ -61,7 +82,7 @@ const Tecnologias = () => {
             </svg>
 
             <svg
-              className="Icons IconJS"
+              className={`Icons IconJS  ${selectedIcon === "IconJS" ? "active" : ""}`}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 50 50"
               width="100px"
@@ -71,8 +92,9 @@ const Tecnologias = () => {
               <path d="M 6.667969 4 C 5.207031 4 4 5.207031 4 6.667969 L 4 43.332031 C 4 44.792969 5.207031 46 6.667969 46 L 43.332031 46 C 44.792969 46 46 44.796875 46 43.332031 L 46 6.667969 C 46 5.207031 44.796875 4 43.332031 4 Z M 6.667969 6 L 43.332031 6 C 43.703125 6 44 6.296875 44 6.667969 L 44 43.332031 C 44 43.703125 43.703125 44 43.332031 44 L 6.667969 44 C 6.296875 44 6 43.703125 6 43.332031 L 6 6.667969 C 6 6.296875 6.296875 6 6.667969 6 Z M 23 23 L 23 35.574219 C 23 37.503906 22.269531 38 21 38 C 19.671875 38 18.75 37.171875 18.140625 36.097656 L 15 38 C 15.910156 39.925781 18.140625 42 21.234375 42 C 24.65625 42 27 40.179688 27 36.183594 L 27 23 Z M 35.453125 23 C 32.046875 23 29.863281 25.179688 29.863281 28.042969 C 29.863281 31.148438 31.695313 32.617188 34.449219 33.789063 L 35.402344 34.199219 C 37.140625 34.960938 38 35.425781 38 36.734375 C 38 37.824219 37.171875 38.613281 35.589844 38.613281 C 33.707031 38.613281 32.816406 37.335938 32 36 L 29 38 C 30.121094 40.214844 32.132813 42 35.675781 42 C 39.300781 42 42 40.117188 42 36.683594 C 42 33.496094 40.171875 32.078125 36.925781 30.6875 L 35.972656 30.28125 C 34.335938 29.570313 33.625 29.109375 33.625 27.964844 C 33.625 27.039063 34.335938 26.328125 35.453125 26.328125 C 36.550781 26.328125 37.253906 26.792969 37.90625 27.964844 L 40.878906 26.058594 C 39.625 23.84375 37.878906 23 35.453125 23 Z" />
             </svg>
 
+            <button></button>
             <svg
-              className="Icons IconGulp"
+              className={`Icons IconGulp  ${selectedIcon === "IconGulp" ? "active" : ""}`}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
               width="100px"
@@ -83,7 +105,7 @@ const Tecnologias = () => {
             </svg>
 
             <svg
-              className="Icons IconBoots"
+              className={`Icons IconBoots  ${selectedIcon === "IconBoots" ? "active" : ""}`}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 50 50"
               width="100px"
@@ -94,7 +116,7 @@ const Tecnologias = () => {
             </svg>
 
             <svg
-              className="Icons IconPython"
+              className={`Icons IconPython  ${selectedIcon === "IconPython" ? "active" : ""}`}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 50 50"
               width="100px"
@@ -105,7 +127,7 @@ const Tecnologias = () => {
             </svg>
 
             <svg
-              className="Icons IconReact"
+              className={`Icons IconReact  ${selectedIcon === "IconReact" ? "active" : ""}`}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 50 50"
               width="100px"
@@ -116,7 +138,7 @@ const Tecnologias = () => {
             </svg>
 
             <svg
-              className="Icons IconVSCode"
+              className={`Icons IconVSCode  ${selectedIcon === "IconVSCode" ? "active" : ""}`}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 50 50"
               width="100px"
@@ -127,7 +149,7 @@ const Tecnologias = () => {
             </svg>
 
             <svg
-              className="Icons IconSass"
+              className={`Icons IconSass  ${selectedIcon === "IconSass" ? "active" : ""}`}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 50 50"
               width="100px"
@@ -138,7 +160,7 @@ const Tecnologias = () => {
             </svg>
 
             <svg
-              className="Icons IconNodeJS"
+              className={`Icons IconNodeJS  ${selectedIcon === "IconNodeJS" ? "active" : ""}`}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               width="100px"
@@ -149,10 +171,7 @@ const Tecnologias = () => {
             </svg>
           </TechItem>
         </div>
-        <TechDescription
-          shadowcolor={shadowColor}
-          dangerouslySetInnerHTML={{ __html: selectedTechText }}
-        />
+        
 
         
       </div>
