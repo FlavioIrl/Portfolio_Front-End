@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export const ContainerPerfil = styled.div`
   display: flex;
-  height: 100vh;
   overflow: hidden;
 `;
 

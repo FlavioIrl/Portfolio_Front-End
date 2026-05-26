@@ -3,6 +3,7 @@ import SobreMim from "../../components/SobreMim";
 import Header from "../../components/Header";
 import Perfil from "../../components/Perfil";
 import Tecnologias from "../../components/Tecnologias";
+import Projetos from "../../components/Projetos";
 import { ContainerPerfil, ListaGallegyWrapper, HomeContainer } from "./styles";
 
 const Home = () => {
@@ -22,6 +23,7 @@ const Home = () => {
       <ContainerPerfil>
         <Perfil isOpen={perfilOpen} setIsOpen={setPerfilOpen} />
       </ContainerPerfil>
+      <Projetos/>
     </HomeContainer>
   );
 };
