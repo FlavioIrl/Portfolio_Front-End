@@ -33,7 +33,7 @@ const Tecnologias = () => {
     setShadowColor(techColors[techName] || "rgba(0, 131, 143, 0.4)");
     setSelectedIcon(techName);
   };
-
+  
   return (
     <TechContainer id="tecnologias">
       <div className="content-wrapper">
