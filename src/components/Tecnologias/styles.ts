@@ -5,54 +5,75 @@ interface TechDescriptionProps {
 }
 
 const ICONS = [
-  { cls: "IconHtml5",  angle:   0, color: "#e44d26" },
-  { cls: "IconJS",     angle:  40, color: "#f7df1e" },
-  { cls: "IconCss",   angle:  80, color: "#cf4647" },
-  { cls: "IconPython", angle: 160, color: "#5ab3fc" },
+  { cls: "IconHtml5", angle: 0, color: "#e44d26" },
+  { cls: "IconJS", angle: 40, color: "#f7df1e" },
+  { cls: "IconCss", angle: 80, color: "#cf4647" },
+  { cls: "IconAPI", angle: 320, color: "#1fff7c" },
 ];
+
+export const TechItemContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  overflow: hidden;
+  // background-color: black;
+  // z-index: 10;
+`
 
 export const TechItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 50%;
+  height: 50%;
+  background-image: url(../../../public/images/FundoTech.png);
+  border-radius: 10px;
+  transition: transform .4s ease;
 
   .Icons {
-    width:  var(--icon-size);
+    width: var(--icon-size);
     height: var(--icon-size);
     transform-origin: center;
+    min-width: 100px;
+    height: 100px;
     cursor: pointer;
-    transition: filter .3s, fill .3s, transform .3s ease-in-out;
+    z-index: 10;
+    transition:
+      filter 0.3s,
+      fill 0.3s,
+      transform 0.3s ease-in-out;
   }
-
 
   ${ICONS.map(
     ({ cls, angle, color }) => css`
       .${cls} {
         fill: ${color};
         &:hover,
-        &.active { 
-          filter:
-            drop-shadow(0 0 15px ${color})
-            drop-shadow(0 0 30px ${color}cc);
+        &.active {
+          filter: drop-shadow(0 0 5px ${color})
+            drop-shadow(0 0 5px ${color}cc);
           fill: #fff;
-          transform:
-            scale(1.1);
+          transform: scale(1.1);
         }
       }
-    `
+    `,
   )}
 
   /* responsivo: só ajusta o tamanho da roda e o offset dos ícones */
-  @media (max-width: 992px) { --wheel-size: 350px; --icon-offset: -120px; }
-  @media (max-width: 768px) { --wheel-size: 300px; --icon-offset: -100px; }
-  @media (max-width: 480px) { --wheel-size: 250px; --icon-offset: -80px; }
+  @media (max-width: 992px) {
+    --wheel-size: 350px;
+    --icon-offset: -120px;
+  }
+  @media (max-width: 768px) {
+    --wheel-size: 300px;
+    --icon-offset: -100px;
+  }
+  @media (max-width: 480px) {
+    --wheel-size: 250px;
+    --icon-offset: -80px;
+  }
 `;
-
-  
-//
-// 3) Descrição com box-shadow dinâmico
-//
 export const TechDescription = styled.p<TechDescriptionProps>`
   margin-top: 80px;
   width: 100%;
@@ -74,7 +95,6 @@ export const TechDescription = styled.p<TechDescriptionProps>`
     font-size: 1em;
   }
 `;
-
 
 //
 // 4) Container geral
