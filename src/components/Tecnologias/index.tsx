@@ -1,4 +1,4 @@
-import { TechContainer, TechItem, TechDescription } from "./styles";
+ import { TechContainer, TechItem, TechDescription } from "./styles";
 import { useState } from "react";
 
 const Tecnologias = () => {
