@@ -11,25 +11,92 @@ const ICONS = [
   { cls: "IconAPI", angle: 320, color: "#1fff7c" },
 ];
 
-export const TechItemContainer = styled.div`
-  display: flex;
-  justify-content: center;
+export const TechContainer = styled.div`
+  background: #1b1b1b;
   width: 100%;
+  min-height: 70vh;
+  padding: 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: clamp(40px, 6vw, 60px);
+    color: #38bdae;
+    font-weight: bold;
+  }
+
+  .fundoDesenho {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-item: center;
+
+  }
+
+  .content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* quando usar <TechItem className="tech-wheel-container"> */
+  & .tech-wheel-container {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 992px) {
+    .content-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+    .description {
+      width: 90%;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+  }
+`;
+
+export const ButtonCharge = styled.button`
+  background-color: green;
+  color: #fff;
+  border: none;
+  margin-top: 20px;
+  padding: 20px;
+  padding-inline: 50px;
+  font-weight: bold;
+  font-size: 20px;
+`
+
+export const TechItemContainer = styled.div`
+  
   padding: 10px;
   overflow: hidden;
-  // background-color: black;
-  // z-index: 10;
+
+  background-image: url(../../../public/images/FundoTech.png);
+  border-radius: 10px;
+  width: 50%;
+  height: 50%;
+  
 `
 
 export const TechItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
-  height: 50%;
-  background-image: url(../../../public/images/FundoTech.png);
-  border-radius: 10px;
   transition: transform .4s ease;
+  margin-right: 3rem;
+  position: relative;
+  height: 150px;
 
   .Icons {
     width: var(--icon-size);
@@ -43,6 +110,14 @@ export const TechItem = styled.div`
       filter 0.3s,
       fill 0.3s,
       transform 0.3s ease-in-out;
+  }
+  .Icons.active {
+    transform: scale(1.2);
+  }
+  
+  .Icons:not(.active) {
+    opacity: .5;
+    transform: scale(.8);
   }
 
   ${ICONS.map(
@@ -99,49 +174,3 @@ export const TechDescription = styled.p<TechDescriptionProps>`
 //
 // 4) Container geral
 //
-export const TechContainer = styled.div`
-  background: #1b1b1b;
-  width: 100%;
-  min-height: 70vh;
-  padding: 20px;
-  box-sizing: border-box;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  h2 {
-    width: 100%;
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: clamp(40px, 6vw, 60px);
-    color: #38bdae;
-    font-weight: bold;
-  }
-
-  .content-wrapper {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  /* quando usar <TechItem className="tech-wheel-container"> */
-  & .tech-wheel-container {
-    flex-shrink: 0;
-  }
-
-  @media (max-width: 992px) {
-    .content-wrapper {
-      flex-direction: column;
-      align-items: center;
-    }
-    .description {
-      width: 90%;
-      margin-bottom: 40px;
-      text-align: center;
-    }
-  }
-`;
