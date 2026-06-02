@@ -114,12 +114,15 @@ export const TechItem = styled.div`
     transform 0.3s ease-in-out;
     flex: 0 0 auto;
     transform-origin: center;
-    // position: absolute;
+    position: absolute;
+    // display: none;
     
   }
   .Icons.active {
     transform: scale(1.2);
-    // scroll-snap-align: center;
+    display: flex;
+    position: relative;
+    scroll-snap-align: center;
   }
   
   .Icons:not(.active) {
