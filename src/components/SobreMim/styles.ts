@@ -2,7 +2,6 @@
 import styled from "styled-components";
 
 export const ContainerSobre = styled.div`
-  background-color: #444444ff;
   width: 100%;
   color: #fff;
   display: flex;
@@ -11,8 +10,13 @@ export const ContainerSobre = styled.div`
   align-items: center;
   padding-bottom: 60px;
   overflow-x: hidden;
+  background-image: url("/images/BackgroundSobreMim.jfif");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
 
   h2 {
+    font-family: "Clash Display", sans-serif;
     font-size: 2.5rem;
     color: #38bdae;
     font-weight: bold;

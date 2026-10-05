@@ -103,4 +103,4 @@ const Header = ({ onContatoClick, isPerfilOpen }: HeaderProps) => {
   );
 };
 
-export default Header;
+// export default Header;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SobreMim from "../../components/SobreMim";
-import Header from "../../components/Header";
+// import Header from "../../components/Header";
 import Perfil from "../../components/Perfil";
 import Tecnologias from "../../components/Tecnologias";
 import Projetos from "../../components/Projetos";
@@ -9,12 +9,12 @@ import { ContainerPerfil, ListaGallegyWrapper, HomeContainer } from "./styles";
 const Home = () => {
   const [perfilOpen, setPerfilOpen] = useState(false);
 
-  const togglePerfil = () => {
-    setPerfilOpen((prev) => !prev);
-  };
+  // const togglePerfil = () => {
+  //   setPerfilOpen((prev) => !prev);
+  // };
   return (
     <HomeContainer>
-      <Header onContatoClick={togglePerfil} isPerfilOpen={perfilOpen} />
+      {/* <Header onContatoClick={togglePerfil} isPerfilOpen={perfilOpen} /> */}
       {/* <PerfilHorizontal /> */}
       <ListaGallegyWrapper>
         <SobreMim />
